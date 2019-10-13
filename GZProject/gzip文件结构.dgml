@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="2字节" Category="Comment" Bounds="450.394508463542,594.252570542012,51.0366666666669,25.24" Label="2字节" UseManualLocation="True" />
+    <Node Id="2字节1" Category="Comment" Bounds="563.048656967918,594.252557996741,51.0366666666669,25.24" Label="2字节" UseManualLocation="True" />
+    <Node Id="44cc50f1-ff4c-45b8-af3b-990bfea8caec1" Category="Comment" Bounds="1038.39001171759,571.447764849416,249.743333333333,619.6" Label="再来看这个例子，有字符串&#xA;&#xA;“mnoabczxyuvabczxydefgh”&#xA;&#xA;假设第一个“abc”字符串已经插入到字典中，哈希值为ins_h1，位置为head[ins_h1]（该值为3），并且现在先行缓冲区第一个字节是第二个“abc”的“a”，那么现在计算第二个“abc”的哈希值，记为ins_h2。从上面那个例子可知，此时第二个字符串“abc”可以找到匹配，就是第一个“abc”，而且连出现位置也可以知道。但是，此时针对第二个“abc”字符串的查找过程并没有结束，压缩算法会继续进行“尝试匹配”。第二个“abc”字符串沿着先行缓冲区方向的第一个字节，也就是该字符串的右面第一个字节，是字符“z”，而第一个“abc”右面第一个字节也是字符“z”，继续往这两个字符串的右面看，发现从这两个字符串开始往右，一口气有三个连续字符都是一样的（这里必须提一句，再往右，就发现不同了，一个是d而另一个是u，所以只能截止到y，不能再往右了），都是字符串“zxy”！所以，第二个字符串“abc”所找到的匹配串不仅仅是“abc”，更是字符串“abczxy”，因此这次的匹配结果就是“abczxy”而不是“abc”！这次的匹配长度就是6（因为匹配了六个字符）。第一个“abc”中a的位置是3，通过head[ins_h1 or ins_h2]可以得到，第二个“abc”中a的位置是已知的（为什么已知，因为逐字节处理的时候会一直记着这是window中第几个字符，对应源码中的变量strstart），即11，这两个位置的差值，即（8 = 11 – 3），8就是这两个字符串之间的距离。此时，LZ77的长度距离对儿就获得了，匹配长度是6，距离是8，将字符串“abczxy”用长度距离对儿替换后，整个字符串就是&#xA;&#xA;“mnoabczxyuv(6,8)defgh”" UseManualLocation="True" />
+    <Node Id="4c23b05f-0085-4a25-8724-70c28b7726361" Category="Comment" Bounds="1740.88566736043,601.95996940136,249.673333333333,253.84" Label=" 十进制值                 bits（二进制）        含义&#xA;&#xA;               000          no compression            没压缩&#xA;&#xA;                   1                     01                       compressed with fixed Huffman codes，静态哈夫曼编码&#xA;&#xA;                   2                     10                       compressed with dynamic Huffman codes，动态哈夫曼编码&#xA;&#xA;                   3                     11                       reserved (error)，预留，异常" />
+    <Node Id="4字节，倒着读" Category="Comment" Bounds="1630.40570932015,602.4808146649,99.0366666666667,25.24" Label="4字节，倒着读" UseManualLocation="True" />
+    <Node Id="4字节，倒着读1" Category="Comment" Bounds="1596.52762232731,602.492731933594,99.0366666666669,25.24" Label="4字节，倒着读" UseManualLocation="True" />
+    <Node Id="4字节，倒着读2" Category="Comment" Bounds="1352.50350665655,203.380174020633,99.0366666666669,25.24" Label="4字节，倒着读" UseManualLocation="True" />
+    <Node Id="4字节，倒着读3" Category="Comment" Bounds="1829.87072916667,278.603658447266,99.0366666666669,25.24" Label="4字节，倒着读" UseManualLocation="True" />
+    <Node Id="80b86e8c-0542-4111-91d8-8f3f8abd75bb1" Category="Comment" Bounds="1429.49649789682,1058.79430166016,245.116666666667,162.4" Label="FLG：1字节。标志&#xD;&#xA;            bit 0 set: 文件可能是ASCII文本文件&#xD;&#xA;            bit 1 set: 附加多个gzip文件部分&#xD;&#xA;            bit 2 set: 存在有可选的附加 内容&#xD;&#xA;            bit 3 set: 提供了原始的文件名称&#xD;&#xA;            bit 4 set: 则提供有一个O－终结的文件内容&#xD;&#xA;            bit 5 set: 文件被加密&#xD;&#xA;            bit 6,7:   保留" UseManualLocation="True" />
+    <Node Id="CM=0x08" Category="Comment" Bounds="1000.65765937819,370.613665554098,75.8433333333332,25.24" Label="CM=0x08" UseManualLocation="True" />
+    <Node Id="CM=0x081" Category="Comment" Bounds="531.413333333333,233.36,75.8433333333332,25.24" Label="CM=0x08" UseManualLocation="True" />
+    <Node Id="CM=0x082" Category="Comment" Bounds="1323.65321461232,1127.37430166016,75.8433333333332,25.24" Label="CM=0x08" UseManualLocation="True" />
+    <Node Id="CRC32" Bounds="581.210499999999,-79.8419259008304,77.96,25" Group="Collapsed" Label="CRC32" />
+    <Node Id="CRC321" Bounds="616.423415842018,221.291014259663,77.96,25" Group="Collapsed" Label="CRC32" />
+    <Node Id="FLG：1字节。标志" Category="Comment" Bounds="1106.50100369785,302.033665554098,245.116666666667,162.4" Label="FLG：1字节。标志&#xD;&#xA;            bit 0 set: 文件可能是ASCII文本文件&#xD;&#xA;            bit 1 set: 附加多个gzip文件部分&#xD;&#xA;            bit 2 set: 存在有可选的附加 内容&#xD;&#xA;            bit 3 set: 提供了原始的文件名称&#xD;&#xA;            bit 4 set: 则提供有一个O－终结的文件内容&#xD;&#xA;            bit 5 set: 文件被加密&#xD;&#xA;            bit 6,7:   保留" UseManualLocation="True" />
+    <Node Id="Gzip文件头" Bounds="70.0000000000023,-81.7632998109885,100.433333333333,25" Group="Collapsed" Label="gzip文件头" />
+    <Node Id="Gzip文件头1" Bounds="299.990080911185,221.291014259663,100.433333333333,25" Group="Collapsed" Label="gzip文件头" />
+    <Node Id="Gzip文件头2" Bounds="-38.0257648204522,555.006763133585,100.433333333333,25" Group="Collapsed" Label="gzip文件头" UseManualLocation="True" />
+    <Node Id="ID1=0x1F" Category="Comment" Bounds="319.99,233.36,75.1333333333332,25.24" Label="ID1=0x1F" UseManualLocation="True" />
+    <Node Id="ID1=0x1F1" Category="Comment" Bounds="1112.22983326467,1127.37430166016,75.1333333333332,25.24" Label="ID1=0x1F" UseManualLocation="True" />
+    <Node Id="ID2=0x8B" Category="Comment" Bounds="894.367736689383,370.613665554098,76.29,25.24" Label="ID2=0x8B" UseManualLocation="True" />
+    <Node Id="ID2=0x8B1" Category="Comment" Bounds="425.123333333333,233.36,76.29,25.24" Label="ID2=0x8B" UseManualLocation="True" />
+    <Node Id="ID2=0x8B2" Category="Comment" Bounds="1217.36323088836,1127.37430166016,76.29,25.24" Label="ID2=0x8B" UseManualLocation="True" />
+    <Node Id="IDM1" Category="Comment" Bounds="789.23443061842,370.613665554098,75.1333333333332,25.24" Label="ID1=0x1F" UseManualLocation="True" />
+    <Node Id="LEN" Bounds="306.433533333331,-81.1806422365095,62.5100000000002,25" Group="Collapsed" Label="LEN" />
+    <Node Id="LZ77过程" Bounds="92.4076685000812,524.885770998814,190.364948693333,85.2419507456" Group="Expanded" Label="LZ77过程" UseManualLocation="True" />
+    <Node Id="MTIME：4字节。更改时间。UINX格式。" Category="Comment" Bounds="1381.61767199212,370.613665554098,241.47,25.24" Label="MTIME：4字节。更改时间。UINX格式。" UseManualLocation="True" />
+    <Node Id="MTIME：4字节。更改时间。UINX格式。1" Category="Comment" Bounds="912.373333333333,233.36,241.47,25.24" Label="MTIME：4字节。更改时间。UINX格式。" UseManualLocation="True" />
+    <Node Id="MTIME：4字节。更改时间。UINX格式。2" Category="Comment" Bounds="1704.59226165008,1127.36288808594,241.47,25.24" Label="MTIME：4字节。更改时间。UINX格式。" UseManualLocation="True" />
+    <Node Id="NLEN" Bounds="398.943633333334,-80.6106454749349,72.2666666666664,25" Group="Collapsed" Label="NLEN" />
+    <Node Id="OS：1字节。操作系统，确切地说应该是文件系统。" Category="Comment" Bounds="1929.18101753248,233.453711330465,247.743333333333,299.56" Label="OS：1字节。操作系统，确切地说应该是文件系统。&#xD;&#xA;                 0 - FAT filesystem (MS-DOS, OS/2, NT/Win32)&#xD;&#xA;                 1 - Amiga&#xD;&#xA;                 2 - VMS (or OpenVMS)&#xD;&#xA;                 3 - Unix&#xD;&#xA;                 4 - VM/CMS&#xD;&#xA;                 5 - Atari TOS&#xD;&#xA;                 6 - HPFS filesystem (OS/2, NT)&#xD;&#xA;                 7 - Macintosh&#xD;&#xA;                 8 - Z-System&#xD;&#xA;                 9 - CP/M&#xD;&#xA;                10 - TOPS-20&#xD;&#xA;                11 - NTFS filesystem (NT)&#xD;&#xA;                12 - QDOS&#xD;&#xA;                13 - Acorn RISCOS&#xD;&#xA;               255 - unknown" UseManualLocation="True" />
+    <Node Id="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法" Category="Comment" Bounds="1183.84333333333,218.12,246.093333333333,55.72" Label="XFL：1字节。附加的标志。当CM = 8时，XFL = 2表示最大压缩但最慢的算法；XFL = 4表示最快但最小压缩的算法 " UseManualLocation="True" />
+    <Node Id="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法1" Category="Comment" Bounds="1976.0832072881,1112.13433217773,246.093333333333,55.72" Label="XFL：1字节。附加的标志。当CM = 8时，XFL = 2表示最大压缩但最慢的算法；XFL = 4表示最快但最小压缩的算法 " UseManualLocation="True" />
+    <Node Id="b342aa9a-de97-4b62-8f83-7706de90c11c1" Category="Comment" Bounds="1514.91591691561,126.50481722256,247.01,253.84" Label=" 十进制值                 bits（二进制）        含义&#xA;&#xA;               000          no compression            没压缩&#xA;&#xA;                   1                     01                       compressed with fixed Huffman codes，静态哈夫曼编码&#xA;&#xA;                   2                     10                       compressed with dynamic Huffman codes，动态哈夫曼编码&#xA;&#xA;                   3                     11                       reserved (error)，预留，异常" />
+    <Node Id="cb6aa984-a9c6-47a6-b43a-d25ebf08dc011" Category="Comment" Bounds="-5.04690562763699E-05,-2.50450652448046,249.99,451.96" Label="静态哈夫曼编码使用一张固定的literal/length码表，码表如下，&#xA;&#xA;                  Lit Value                Bits                     Codes&#xA;&#xA;                  ---------                 ----                      -----&#xA;&#xA;                    0 - 143                   8                        00110000   through 10111111&#xA;&#xA;                  144 - 255                 9                        110010000 through 111111111&#xA;&#xA;                  256 - 279                 7                        0000000     through 0010111&#xA;&#xA;                  280 - 287                 8                        11000000   through 11000111&#xA;&#xA;Lit Value代表literal/length值，0-255是ASCII码，256-287代表另外的含义，后面再介绍，286和287永远不会用到；Bits是码字长度，Codes就是对应的码字。" />
+    <Node Id="d5073261-3c26-417b-b720-229212b66d951" Category="Comment" Bounds="637.256666666666,164.78,245.116666666667,162.4" Label="FLG：1字节。标志&#xD;&#xA;            bit 0 set: 文件可能是ASCII文本文件&#xD;&#xA;            bit 1 set: 附加多个gzip文件部分&#xD;&#xA;            bit 2 set: 存在有可选的附加 内容&#xD;&#xA;            bit 3 set: 提供了原始的文件名称&#xD;&#xA;            bit 4 set: 则提供有一个O－终结的文件内容&#xD;&#xA;            bit 5 set: 文件被加密&#xD;&#xA;            bit 6,7:   保留" UseManualLocation="True" />
+    <Node Id="db547490-22ab-458d-ad00-fdaeb4098de41" Category="Comment" Bounds="1459.93666666667,96.2000000000004,247.743333333333,299.56" Label="OS：1字节。操作系统，确切地说应该是文件系统。&#xD;&#xA;                 0 - FAT filesystem (MS-DOS, OS/2, NT/Win32)&#xD;&#xA;                 1 - Amiga&#xD;&#xA;                 2 - VMS (or OpenVMS)&#xD;&#xA;                 3 - Unix&#xD;&#xA;                 4 - VM/CMS&#xD;&#xA;                 5 - Atari TOS&#xD;&#xA;                 6 - HPFS filesystem (OS/2, NT)&#xD;&#xA;                 7 - Macintosh&#xD;&#xA;                 8 - Z-System&#xD;&#xA;                 9 - CP/M&#xD;&#xA;                10 - TOPS-20&#xD;&#xA;                11 - NTFS filesystem (NT)&#xD;&#xA;                12 - QDOS&#xD;&#xA;                13 - Acorn RISCOS&#xD;&#xA;               255 - unknown" UseManualLocation="True" />
+    <Node Id="e4d7b463-c15b-4b0c-81de-946716446ff11" Category="Comment" Bounds="1653.0877436067,355.373680812887,246.093333333333,55.72" Label="XFL：1字节。附加的标志。当CM = 8时，XFL = 2表示最大压缩但最慢的算法；XFL = 4表示最快但最小压缩的算法 " UseManualLocation="True" />
+    <Node Id="f691e2e8-6654-4563-8a99-b01f8544f71c1" Category="Comment" Bounds="2252.17648121388,990.214301660156,247.743333333334,299.56" Label="OS：1字节。操作系统，确切地说应该是文件系统。&#xD;&#xA;                 0 - FAT filesystem (MS-DOS, OS/2, NT/Win32)&#xD;&#xA;                 1 - Amiga&#xD;&#xA;                 2 - VMS (or OpenVMS)&#xD;&#xA;                 3 - Unix&#xD;&#xA;                 4 - VM/CMS&#xD;&#xA;                 5 - Atari TOS&#xD;&#xA;                 6 - HPFS filesystem (OS/2, NT)&#xD;&#xA;                 7 - Macintosh&#xD;&#xA;                 8 - Z-System&#xD;&#xA;                 9 - CP/M&#xD;&#xA;                10 - TOPS-20&#xD;&#xA;                11 - NTFS filesystem (NT)&#xD;&#xA;                12 - QDOS&#xD;&#xA;                13 - Acorn RISCOS&#xD;&#xA;               255 - unknown" UseManualLocation="True" />
+    <Node Id="先行缓冲区中的字符串至少由3个连续的字符组成" Category="Comment" Bounds="212.353345050926,757.266713867187,243.036666666667,40.48" Label="先行缓冲区中的字符串至少由3个连续的字符组成" UseManualLocation="True" />
+    <Node Id="压缩就是利用这三个连续字符来计算哈希值" Category="Comment" Bounds="485.390011717593,758.227595214844,236,40.48" Label="压缩就是利用这三个连续字符来计算哈希值，使用哈希表来提高查找速度" UseManualLocation="True" />
+    <Node Id="压缩方式：动态哈夫曼" Bounds="-58.0257648204523,484.885770986014,360.798382013867,145.2419507712" Group="Expanded" Label="压缩方式：动态哈夫曼" UseManualLocation="True" />
+    <Node Id="压缩方式：存储" Bounds="50.0000000000023,-121.763399810989,771.170599999997,87.0697095518862" Group="Expanded" UseManualLocation="True" />
+    <Node Id="压缩方式：静态哈夫曼" Bounds="279.990043988745,181.170917616597,576.393371853273,85.2402" Group="Expanded" />
+    <Node Id="原始(未压缩)数据的32位校验和" Category="Comment" Bounds="1725.56428899398,602.406657432712,186.086666666667,25.24" Label="原始(未压缩)数据的32位校验和" UseManualLocation="True" />
+    <Node Id="原始(未压缩)数据的32位校验和1" Category="Comment" Bounds="1481.54017332322,203.380174020633,186.086666666666,25.24" Label="原始(未压缩)数据的32位校验和" UseManualLocation="True" />
+    <Node Id="原始(未压缩)数据的长度的低32位。" Category="Comment" Bounds="1759.39785969588,602.484688469533,210.086666666667,25.24" Label="原始(未压缩)数据的长度的低32位。" UseManualLocation="True" />
+    <Node Id="原始(未压缩)数据的长度的低32位。1" Category="Comment" Bounds="1829.87072916667,333.843658447266,210.086666666666,25.24" Label="原始(未压缩)数据的长度的低32位。" UseManualLocation="True" />
+    <Node Id="原始文件长度" Bounds="724.383415842018,221.291014259663,112,25" Group="Collapsed" Label="原始文件长度" />
+    <Node Id="后续2bit" Category="Comment" Bounds="1494.91591691561,86.5047172225598,287.01,313.8402" Group="Expanded" Label="后续2bit" UseManualLocation="True" />
+    <Node Id="后续两bit" Category="Comment" Bounds="1720.88577895304,561.960164518547,289.673333333334,313.8402" Group="Expanded" Label="后续两bit" UseManualLocation="True" />
+    <Node Id="块首部" Bounds="200.433433333335,-81.6028583227666,75.9999999999995,25" Group="Collapsed" Label="块首部" />
+    <Node Id="块首部1" Bounds="430.423414244519,221.291014259663,76,25" Group="Collapsed" Label="块首部" />
+    <Node Id="块首部后面如果还不够一个字节，那么剩下的不够一个字节的那几个比特就全部忽略，实际的数据从一个全新的字节开始。" Category="Comment" Bounds="2040.55900394897,691.01996940136,248,55.72" Label="块首部后面如果还不够一个字节，那么剩下的不够一个字节的那几个比特就全部忽略，实际的数据从一个全新的字节开始。" UseManualLocation="True" />
+    <Node Id="块首部后面紧跟着就是经过静态哈夫曼编码的二进制码流，即比特流。由于块首部后面就是二进制码流，所以不会出现上面存储类型中为了补齐一个字节而浪费几比特的情况" Category="Comment" Bounds="1811.92592179842,207.944813407863,248,70.9599999999999" Label="块首部后面紧跟着就是经过静态哈夫曼编码的二进制码流，即比特流。由于块首部后面就是二进制码流，所以不会出现上面存储类型中为了补齐一个字节而浪费几比特的情况" UseManualLocation="True" />
+    <Node Id="当前字符串的哈希值计算结束之后，先判断head[ins_h]是否为空，如果为空，说明没匹配，作罢；如果不为空，说明有匹配，那就用一个变量将head[ins_h]记录下来，我们将这个变量记为match_head，然后再将当前字符串插入到字典中，插入过程就是上面那两句伪代码（提示，head[ins_h]会被当前值更新）---------------------作者：jison_r_wang来源：CSDN原文：https://blog.csdn.net/jison_r_wang/article/details/52073710版权声明：本文为博主原创文章，转载请附上博文链接！" Category="Comment" Bounds="1319.05379011524,726.236600189011,248,131.92" Label="当前字符串的哈希值计算结束之后，先判断head[ins_h]是否为空，如果为空，说明没匹配，作罢；如果不为空，说明有匹配，那就用一个变量将head[ins_h]记录下来，我们将这个变量记为match_head，然后再将当前字符串插入到字典中，插入过程就是上面那两句伪代码（提示，head[ins_h]会被当前值更新）" UseManualLocation="True" />
+    <Node Id="数据" Bounds="501.210388183594,-80.2849237033254,50,25.24" Label="数据" />
+    <Node Id="数据1" Bounds="536.423303477123,221.171017616597,50,25.24" Label="数据" />
+    <Node Id="文件长度" Bounds="689.170599999999,-79.6937902591023,112,25" Group="Collapsed" Label="原始文件长度" />
+    <Node Id="构建map:(head[in_h],位置)" Category="Comment" Bounds="807.178825276693,860.7877909729,167.213333333333,25.24" UseManualLocation="True" />
+    <Node Id="查找缓冲区" Category="Comment" Bounds="112.442617193415,564.886746379954,150.33,25.24" Label="查找缓冲区 | 先行缓冲区" />
+    <Node Id="由先行缓冲区第一个字符开始的三个字符计算其哈希值，用ins_h表示。" Category="Comment" Bounds="751.390011717593,718.1076909729,248,86.2" Label="由先行缓冲区第一个字符开始的三个字符计算其哈希值，用ins_h表示。计算完后查找缓冲区扩大一个字节，先行缓冲区减小一个字节,用head[ins_h]来记录当前字符串（由三个连续字符构成）的出现位置" UseManualLocation="True" />
+    <Node Id="第一bit" Category="Comment" Bounds="1402.88577569784,661.020164518547,288,115.7202" Group="Expanded" Label="第一bit" UseManualLocation="True" />
+    <Node Id="第一bit1" Category="Comment" Bounds="1176.9159120328,185.564713407863,288,115.7202" Group="Expanded" Label="第一bit" UseManualLocation="True" />
+    <Node Id="这一位如果置上（该位置一），表示这是最后一个压缩块，如果没置上（该位是0），表示这个压缩块后面还有后续的压缩块。" Category="Comment" Bounds="1422.88566410522,701.01996940136,248,55.72" Label="这一位如果置上（该位置一），表示这是最后一个压缩块，如果没置上（该位是0），表示这个压缩块后面还有后续的压缩块。" />
+    <Node Id="这一位如果置上（该位置一），表示这是最后一个压缩块，如果没置上（该位是0），表示这个压缩块后面还有后续的压缩块。1" Category="Comment" Bounds="1196.9159120328,225.564813407862,248,55.7200000000001" Label="这一位如果置上（该位置一），表示这是最后一个压缩块，如果没置上（该位是0），表示这个压缩块后面还有后续的压缩块。" />
+  </Nodes>
+  <Links>
+    <Link Source="4字节，倒着读" Target="原始(未压缩)数据的长度的低32位。" Bounds="1729.44577000989,615.108969200797,20.9554837110506,0.000439945282664667" />
+    <Link Source="4字节，倒着读1" Target="原始(未压缩)数据的32位校验和" Bounds="1695.53583455989,615.077557086455,20.9999973076153,0.0104748891316149" />
+    <Link Source="4字节，倒着读2" Target="原始(未压缩)数据的32位校验和1" Bounds="1451.54016113281,216.00016784668,21,0" />
+    <Link Source="4字节，倒着读3" Target="原始(未压缩)数据的长度的低32位。1" Bounds="1908.07413888537,340.843648071289,23.7744497114711,23.6524376197524" />
+    <Link Source="80b86e8c-0542-4111-91d8-8f3f8abd75bb1" Target="MTIME：4字节。更改时间。UINX格式。2" Bounds="1273.91967773438,848.994201660156,21,0" />
+    <Link Source="CM=0x08" Target="FLG：1字节。标志" Bounds="1076.50099090163,383.260382509776,21.0000109863281,0" />
+    <Link Source="CM=0x081" Target="d5073261-3c26-417b-b720-229212b66d951" Bounds="607.256652832031,245.979995727539,21,0" />
+    <Link Source="CM=0x082" Target="80b86e8c-0542-4111-91d8-8f3f8abd75bb1" Bounds="998.803039550781,848.994201660156,21,0" />
+    <Link Source="CRC32" Target="4字节，倒着读1" Category="Contains" />
+    <Link Source="CRC32" Target="原始(未压缩)数据的32位校验和" Category="Contains" />
+    <Link Source="CRC32" Target="文件长度" Bounds="659.1705,-67.3823955272733,21.0001051758933,0.0225220567725586" />
+    <Link Source="CRC321" Target="4字节，倒着读2" Category="Contains" />
+    <Link Source="CRC321" Target="原始(未压缩)数据的32位校验和1" Category="Contains" />
+    <Link Source="CRC321" Target="原始文件长度" Bounds="694.383422851563,233.791015625,21,0" />
+    <Link Source="FLG：1字节。标志" Target="MTIME：4字节。更改时间。UINX格式。" Bounds="1351.61766855463,383.260382509776,21.0000016276042,0" />
+    <Link Source="Gzip文件头" Target="CM=0x08" Category="Contains" />
+    <Link Source="Gzip文件头" Target="FLG：1字节。标志" Category="Contains" />
+    <Link Source="Gzip文件头" Target="ID2=0x8B" Category="Contains" />
+    <Link Source="Gzip文件头" Target="IDM1" Category="Contains" />
+    <Link Source="Gzip文件头" Target="MTIME：4字节。更改时间。UINX格式。" Category="Contains" />
+    <Link Source="Gzip文件头" Target="OS：1字节。操作系统，确切地说应该是文件系统。" Category="Contains" />
+    <Link Source="Gzip文件头" Target="e4d7b463-c15b-4b0c-81de-946716446ff11" Category="Contains" />
+    <Link Source="Gzip文件头" Target="块首部" Bounds="170.433333333334,-69.1049141188349,21.0001068625465,0.0259333215637838" />
+    <Link Source="Gzip文件头1" Target="CM=0x081" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="ID1=0x1F" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="ID2=0x8B1" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="MTIME：4字节。更改时间。UINX格式。1" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="d5073261-3c26-417b-b720-229212b66d951" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="db547490-22ab-458d-ad00-fdaeb4098de41" Category="Contains" />
+    <Link Source="Gzip文件头1" Target="块首部1" Bounds="400.423400878906,233.791015625,21,0" />
+    <Link Source="Gzip文件头2" Target="80b86e8c-0542-4111-91d8-8f3f8abd75bb1" Category="Contains" />
+    <Link Source="Gzip文件头2" Target="CM=0x082" Category="Contains" />
+    <Link Source="Gzip文件头2" Target="ID1=0x1F1" Category="Contains" />
+    <Link Source="Gzip文件头2" Target="ID2=0x8B2" Category="Contains" />
+    <Link Source="Gzip文件头2" Target="LZ77过程" Bounds="62.407568512881,567.506756326108,21.0175743338668,2.00853753540287E-06" />
+    <Link Source="Gzip文件头2" Target="MTIME：4字节。更改时间。UINX格式。2" Category="Contains" />
+    <Link Source="Gzip文件头2" Target="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法1" Category="Contains" />
+    <Link Source="Gzip文件头2" Target="f691e2e8-6654-4563-8a99-b01f8544f71c1" Category="Contains" />
+    <Link Source="ID1=0x1F" Target="ID2=0x8B1" Bounds="395.123321533203,245.979995727539,21,0" />
+    <Link Source="ID1=0x1F1" Target="ID2=0x8B2" Bounds="786.669677734375,848.994201660156,21,0" />
+    <Link Source="ID2=0x8B" Target="CM=0x08" Bounds="970.657734879499,383.260382509776,20.9999226888021,0" />
+    <Link Source="ID2=0x8B1" Target="CM=0x081" Bounds="501.413330078125,245.979995727539,21,0" />
+    <Link Source="ID2=0x8B2" Target="CM=0x082" Bounds="892.959716796875,848.994201660156,21,0" />
+    <Link Source="IDM1" Target="ID2=0x8B" Bounds="864.367762141869,383.260382509776,20.9999727376303,0" />
+    <Link Source="LEN" Target="2字节" Category="Contains" />
+    <Link Source="LEN" Target="NLEN" Bounds="368.943533333334,-68.4706635738437,21.0002271425211,0.111626612623098" />
+    <Link Source="LZ77过程" Target="查找缓冲区" Category="Contains" />
+    <Link Source="MTIME：4字节。更改时间。UINX格式。" Target="e4d7b463-c15b-4b0c-81de-946716446ff11" Bounds="1623.08767018223,383.260389238749,21.0000716145832,1.17040559644011E-06" />
+    <Link Source="MTIME：4字节。更改时间。UINX格式。1" Target="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法" Bounds="1153.84338378906,245.979995727539,21,0" />
+    <Link Source="MTIME：4字节。更改时间。UINX格式。2" Target="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法1" Bounds="1545.3896484375,848.994201660156,21,0" />
+    <Link Source="NLEN" Target="2字节1" Category="Contains" />
+    <Link Source="NLEN" Target="数据" Bounds="471.2103,-67.9592770558611,21.0001880724538,0.09290523004411" />
+    <Link Source="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法" Target="db547490-22ab-458d-ad00-fdaeb4098de41" Bounds="1429.93664550781,245.979995727539,21,0" />
+    <Link Source="XFL：1字节。附加的标志。当CM=8时，XFL=2表示最大压缩但最慢的算法；XFL=4表示最快但最小压缩的算法1" Target="f691e2e8-6654-4563-8a99-b01f8544f71c1" Bounds="1821.48303222656,848.994201660156,21,0" />
+    <Link Source="cb6aa984-a9c6-47a6-b43a-d25ebf08dc011" Target="压缩方式：静态哈夫曼" Bounds="249.989949530944,223.564481903915,21.0000967386377,0.0149507228682069" />
+    <Link Source="d5073261-3c26-417b-b720-229212b66d951" Target="MTIME：4字节。更改时间。UINX格式。1" Bounds="882.373352050781,245.979995727539,21,0" />
+    <Link Source="e4d7b463-c15b-4b0c-81de-946716446ff11" Target="OS：1字节。操作系统，确切地说应该是文件系统。" Bounds="1899.18107513015,383.260411328834,20.9999405924486,2.31428322194915E-06" />
+    <Link Source="压缩方式：动态哈夫曼" Target="Gzip文件头2" Category="Contains" />
+    <Link Source="压缩方式：动态哈夫曼" Target="LZ77过程" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="CRC32" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="Gzip文件头" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="LEN" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="NLEN" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="块首部" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="数据" Category="Contains" />
+    <Link Source="压缩方式：存储" Target="文件长度" Category="Contains" />
+    <Link Source="压缩方式：静态哈夫曼" Target="CRC321" Category="Contains" />
+    <Link Source="压缩方式：静态哈夫曼" Target="Gzip文件头1" Category="Contains" />
+    <Link Source="压缩方式：静态哈夫曼" Target="原始文件长度" Category="Contains" />
+    <Link Source="压缩方式：静态哈夫曼" Target="块首部1" Category="Contains" />
+    <Link Source="压缩方式：静态哈夫曼" Target="数据1" Category="Contains" />
+    <Link Source="原始文件长度" Target="4字节，倒着读3" Category="Contains" />
+    <Link Source="原始文件长度" Target="原始(未压缩)数据的长度的低32位。1" Category="Contains" />
+    <Link Source="后续2bit" Target="b342aa9a-de97-4b62-8f83-7706de90c11c1" Category="Contains" />
+    <Link Source="后续2bit" Target="块首部后面紧跟着就是经过静态哈夫曼编码的二进制码流，即比特流。由于块首部后面就是二进制码流，所以不会出现上面存储类型中为了补齐一个字节而浪费几比特的情况" Bounds="1781.92602539063,243.424819946289,21,0" />
+    <Link Source="后续两bit" Target="4c23b05f-0085-4a25-8724-70c28b7726361" Category="Contains" />
+    <Link Source="后续两bit" Target="块首部后面如果还不够一个字节，那么剩下的不够一个字节的那几个比特就全部忽略，实际的数据从一个全新的字节开始。" Bounds="2010.55908203125,718.879943847656,21,0" />
+    <Link Source="块首部" Target="LEN" Bounds="276.433433333334,-68.8738709619292,21.0001674034467,0.0812755639182257" />
+    <Link Source="块首部" Target="后续两bit" Category="Contains" />
+    <Link Source="块首部" Target="块首部后面如果还不够一个字节，那么剩下的不够一个字节的那几个比特就全部忽略，实际的数据从一个全新的字节开始。" Category="Contains" />
+    <Link Source="块首部" Target="第一bit" Category="Contains" />
+    <Link Source="块首部1" Target="后续2bit" Category="Contains" />
+    <Link Source="块首部1" Target="块首部后面紧跟着就是经过静态哈夫曼编码的二进制码流，即比特流。由于块首部后面就是二进制码流，所以不会出现上面存储类型中为了补齐一个字节而浪费几比特的情况" Category="Contains" />
+    <Link Source="块首部1" Target="数据1" Bounds="506.423400878906,233.791015625,21,0" />
+    <Link Source="块首部1" Target="第一bit1" Category="Contains" />
+    <Link Source="数据" Target="CRC32" Bounds="551.2104,-67.6383447188998,21.0001433684861,0.0651935608902932" />
+    <Link Source="数据1" Target="CRC321" Bounds="586.423400878906,233.791015625,21,0" />
+    <Link Source="文件长度" Target="4字节，倒着读" Category="Contains" />
+    <Link Source="文件长度" Target="原始(未压缩)数据的长度的低32位。" Category="Contains" />
+    <Link Source="第一bit" Target="后续两bit" Bounds="1690.8857421875,718.879943847656,21,0" />
+    <Link Source="第一bit" Target="这一位如果置上（该位置一），表示这是最后一个压缩块，如果没置上（该位是0），表示这个压缩块后面还有后续的压缩块。" Category="Contains" />
+    <Link Source="第一bit1" Target="后续2bit" Bounds="1464.916015625,243.424819946289,21,0" />
+    <Link Source="第一bit1" Target="这一位如果置上（该位置一），表示这是最后一个压缩块，如果没置上（该位是0），表示这个压缩块后面还有后续的压缩块。1" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="Comment" Label="注释" Description="表示在图表中用户定义的注释" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="注释" />
+    <Category Id="Contains" Label="包含" Description="链接的源是否包含目标对象" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="包含者" IsContainment="True" OutgoingActionLabel="包含" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="组" Description="将节点显示为组" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="注释" ValueLabel="包含注释">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+</DirectedGraph>

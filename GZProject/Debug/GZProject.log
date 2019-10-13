@@ -1,0 +1,3 @@
+﻿  GZ.cpp
+D:\DEMO\GZProject\GZProject\GZ.cpp(33,20): warning C4018:  “<”: 有符号/无符号不匹配
+  GZProject.vcxproj -> D:\DEMO\GZProject\Debug\GZProject.exe
